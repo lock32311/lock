@@ -188,14 +188,14 @@
             document.getElementById('finalImage').src = '/static/images/we.jpg';
             
             setTimeout(showFinalNumber, 3000);
-            await delay(2000);
-            window.location.href = "/lock/step3";
         }
         
         function showFinalNumber() {
             document.getElementById('imageContainer').style.display = 'none';
             document.getElementById('remember').style.display = 'block';
             document.getElementById('finalNumber').style.display = 'block';
+            await delay(2000);
+            window.location.href = "/lock/step3":
         }
     </script>
 </body>
