@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step2</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .title {
+            font-size: 48px;
+            margin-bottom: 50px;
+            animation: fadeIn 2s;
+        }
+        
+        .riddles-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .riddle {
+            width: 30%;
+            min-width: 250px;
+            padding: 20px;
+            border: 1px solid white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .cube {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 50px;
+            border: 2px solid white;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+        
+        .cube-cell {
+            border: 1px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .image-container {
+            display: none;
+            margin: 30px auto;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            max-height: 400px;
+        }
+        
+        .final-number {
+            display: none;
+            font-size: 120px;
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .remember {
+            display: none;
+            font-size: 36px;
+            color: red;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        input {
+            background-color: #333;
+            color: white;
+            border: 1px solid white;
+            padding: 8px;
+            margin: 10px 0;
+        }
+        
+        button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #777;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Step2</div>
+    
+    <div class="riddles-container">
+        <div class="riddle" id="riddle1">
+            <h2>Загадка 1</h2>
+            <p>Кто такой дима?</p>
+            <input type="text" id="answer1">
+            <button onclick="checkAnswer(1)">Проверить</button>
+        </div>
+        
+        <div class="riddle" id="riddle2">
+            <h2>Загадка 2</h2>
+            <p>Самые крутые парни в этом мире lipstik</p>
+            <input type="text" id="answer2">
+            <button onclick="checkAnswer(2)">Проверить</button>
+        </div>
+        
+        <div class="riddle" id="riddle3">
+            <h2>Загадка 3</h2>
+            <p>Ты)))</p>
+            <input type="text" id="answer3">
+            <button onclick="checkAnswer(3)">Проверить</button>
+        </div>
+    </div>
+    
+    <div class="cube">
+        <div class="cube-cell" id="cell1"></div>
+        <div class="cube-cell" id="cell2"></div>
+        <div class="cube-cell" id="cell3"></div>
+    </div>
+    
+    <div class="image-container" id="imageContainer">
+        <img src="" alt="Congratulations" id="finalImage">
+    </div>
+    
+    <div class="remember" id="remember">ЗАПОМНИ!!!</div>
+    <div class="final-number" id="finalNumber">4</div>
+    
+    <script>
+        const correctAnswers = {
+            1: "каблук",
+            2: "вайпер",
+            3: "котик"
+        };
+        
+        const solved = {
+            1: false,
+            2: false,
+            3: false
+        };
+        
+        function checkAnswer(riddleNumber) {
+            const answerInput = document.getElementById(`answer${riddleNumber}`);
+            const userAnswer = answerInput.value.toLowerCase().trim();
+            const cell = document.getElementById(`cell${riddleNumber}`);
+            
+            if (userAnswer === correctAnswers[riddleNumber]) {
+                cell.textContent = userAnswer;
+                solved[riddleNumber] = true;
+                answerInput.disabled = true;
+                document.querySelector(`#riddle${riddleNumber} button`).disabled = true;
+                
+                if (solved[1] && solved[2] && solved[3]) {
+                    setTimeout(showFinalImage, 1000);
+                }
+            } else {
+                alert("Неверно! Попробуйте еще раз.");
+            }
+        }
+        
+        function showFinalImage() {
+            document.querySelector('.riddles-container').style.display = 'none';
+            document.querySelector('.cube').style.display = 'none';
+            
+            const imageContainer = document.getElementById('imageContainer');
+            imageContainer.style.display = 'block';
+            
+            // Указан ваш путь к изображению
+            document.getElementById('finalImage').src = 'we.jpg';
+            
+            setTimeout(showFinalNumber, 3000);
+        }
+        
+        function showFinalNumber() {
+            document.getElementById('imageContainer').style.display = 'none';
+            document.getElementById('remember').style.display = 'block';
+            document.getElementById('finalNumber').style.display = 'block';
+
+            setTimeout(() => {
+                    window.location.href = '/lock/step3';
+                }, 3000)
+        }
+    </script>
+</body>
+</html>
