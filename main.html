@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днем Рождения!</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            min-height: 100vh;
+            background-image: radial-gradient(circle, #330033 0%, #000000 100%);
+        }
+
+        .birthday-text {
+            font-size: 48px;
+            margin: 50px auto;
+            padding: 20px;
+            animation: rainbowGlow 3s infinite alternate;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        @keyframes rainbowGlow {
+            0% { color: #ff0000; }
+            14% { color: #ff7f00; }
+            28% { color: #ffff00; }
+            42% { color: #00ff00; }
+            57% { color: #0000ff; }
+            71% { color: #4b0082; }
+            85% { color: #9400d3; }
+            100% { color: #ff1493; }
+        }
+
+        .links-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px auto;
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        .page-link {
+            position: relative;
+            width: 200px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .page-link:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.6);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .page-link::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                transparent,
+                rgba(255, 20, 147, 0.4)
+            );
+            transform: rotate(30deg);
+            transition: all 0.6s;
+        }
+
+        .page-link:hover::before {
+            top: 100%;
+            left: 100%;
+        }
+
+        .link-number {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .heart {
+            color: #ff1493;
+            animation: pulse 1.5s infinite;
+            display: inline-block;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="birthday-text">С Днем Рождения, Любимая! <span class="heart">❤</span></div>
+
+    <div class="links-container">
+        <a href="/step1" class="page-link">
+            <span class="link-number">1</span>
+            Начало
+        </a>
+        <a href="/step2" class="page-link">
+            <span class="link-number">2</span>
+            Загадки
+        </a>
+        <a href="/step3" class="page-link">
+            <span class="link-number">3</span>
+            Музыка
+        </a>
+        <a href="/step4" class="page-link">
+            <span class="link-number">4</span>
+            Комплименты
+        </a>
+        <a href="/step5" class="page-link">
+            <span class="link-number">5</span>
+            Сюрприз
+        </a>
+    </div>
+
+    <div class="footer">
+        Создано с <span class="heart">❤</span> специально для тебя
+    </div>
+</body>
+</html>
